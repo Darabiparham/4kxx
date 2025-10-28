@@ -346,7 +346,7 @@ box-shadow:0 15px 40px var(--shadow-color);border:0px solid var(--border-color-l
 .text-frame.active{opacity:1;border-color:var(--green-main)}
 @keyframes selectedTextPulse{0%{opacity:0;transform:scale(0.95);border-color:var(--orange-main);box-shadow:0 0 0 rgba(255,110,65,0)}50%{opacity:1;transform:scale(1.02);border-color:var(--green-main);box-shadow:0 0 25px rgba(27,59,20,0.6)}100%{opacity:0.8;transform:scale(1);border-color:var(--green-main);box-shadow:0 0 15px rgba(27,59,20,0.3)}}
 canvas{display:block;width:100%;height:100%;touch-action:manipulation;object-fit:contain;border-radius:18px;background:transparent}
-.footer-controls{background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));transition:all var(--transition-smooth);position:fixed;bottom:0;left:10px;width:calc(100% - 20px);margin-bottom:10px;z-index:1900;box-shadow:0 -6px 30px var(--shadow-color);display:flex;align-items:flex-start;border:1px solid var(--border-color-light);border-radius:40px;min-height:var(--footer-height);padding:8px 16px calc(8px + var(--safe-area-bottom)) 16px}
+.footer-controls{background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));transition:all var(--transition-smooth);position:fixed;bottom:0;left:10px;width:calc(100% - 20px);margin-bottom:10px;z-index:1900;box-shadow:0 -6px 30px var(--shadow-color);display:flex;align-items:center;border:1px solid var(--border-color-light);border-radius:40px;min-height:calc(var(--footer-height) + var(--safe-area-bottom));padding:8px 16px calc(8px + var(--safe-area-bottom)) 16px}
 
 
 .control-icons{display:flex;justify-content:space-around;align-items:center;gap:16px;width:100%}
@@ -1167,34 +1167,14 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         overflow: hidden;
     }
     .main-app-container {
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
+        width: 70vw;
+        height: 70vh;
+        height: 70dvh;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-    }
-    .header {
-        margin-top: 0;
-        left: 0;
-        width: 100%;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        padding-left: calc(16px + var(--safe-area-left));
-        padding-right: calc(16px + var(--safe-area-right));
-    }
-    .footer-controls {
-        margin-bottom: 0;
-        left: 0;
-        width: 100%;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        padding-left: calc(16px + var(--safe-area-left));
-        padding-right: calc(16px + var(--safe-area-right));
     }
     .accordion-panel {
         bottom: calc(var(--footer-height) + var(--safe-area-bottom));
@@ -1208,8 +1188,11 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         padding-right: calc(10px + var(--safe-area-right));
     }
     .canvas-container {
-        padding-left: var(--safe-area-left, 10px);
-        padding-right: var(--safe-area-right, 10px);
+Math.min(containerRect.width * 0.9, 420);
+            displayHeight = displayWidth / targetRatio;
+            displayHeight = Math.min(containerRect.height * 0.9, 490);
+            displayWidth = displayHeight * targetRatio;
+        }
     }
 }
 
@@ -1472,7 +1455,7 @@ body[data-lang="ar"] .layer-panel.active:not(.collapsed):not(.logo-only) {
 </button>
 </div>
 <div class="app-title-section">
-<h1 id="appTitle">DACO Editor</h1>
+<h1 id="appTitle">DACO EditorX</h1>
 <p class="subtitle" id="appSubtitle">made by parham darabi</p>
 </div>
 <div class="header-controls-right">
