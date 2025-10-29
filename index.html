@@ -301,7 +301,7 @@ body[data-lang="en"] .forgot-password { text-align: left; }
 @keyframes dacoLogoFloat{0%,100%{transform:translateY(0px) scale(1)}50%{transform:translateY(-20px) scale(1.05)}}
 @keyframes logoShine{0%{transform:translateX(-100%) translateY(-100%) rotate(45deg)}50%{transform:translateX(100%) translateY(100%) rotate(45deg)}100%{transform:translateX(-100%) translateY(-100%) rotate(45deg)}}
 @keyframes textPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.8;transform:scale(1.02)}}
-.header{position:fixed;top:0;left:10px;width:calc(100% - 20px);margin-top:30px;height:(var(--header-height));display:flex;align-items:center;justify-content:center;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:40px;z-index:2000;transition:all var(--transition-smooth);padding:calc(8px + var(--safe-area-top)) 16px 8px 16px}
+.header{position:fixed;top:0;left:10px;width:calc(100% - 20px);margin-top:10px;height:calc(var(--header-height) + var(--safe-area-top));display:flex;align-items:center;justify-content:center;background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--border-color-light);border-radius:40px;z-index:2000;transition:all var(--transition-smooth);padding:calc(8px + var(--safe-area-top)) 16px 8px 16px}
 
 .header-top{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;height:100%}
 body[data-lang="fa"] .header-top,
@@ -346,7 +346,7 @@ box-shadow:0 15px 40px var(--shadow-color);border:0px solid var(--border-color-l
 .text-frame.active{opacity:1;border-color:var(--green-main)}
 @keyframes selectedTextPulse{0%{opacity:0;transform:scale(0.95);border-color:var(--orange-main);box-shadow:0 0 0 rgba(255,110,65,0)}50%{opacity:1;transform:scale(1.02);border-color:var(--green-main);box-shadow:0 0 25px rgba(27,59,20,0.6)}100%{opacity:0.8;transform:scale(1);border-color:var(--green-main);box-shadow:0 0 15px rgba(27,59,20,0.3)}}
 canvas{display:block;width:100%;height:100%;touch-action:manipulation;object-fit:contain;border-radius:18px;background:transparent}
-.footer-controls{background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));transition:all var(--transition-smooth);position:fixed;bottom:0;left:10px;width:calc(100% - 20px);margin-bottom:10px;z-index:1900;box-shadow:0 -6px 30px var(--shadow-color);display:flex;align-items:flex-start;border:1px solid var(--border-color-light);border-radius:40px;min-height:calc(var(--footer-height) + var(--safe-area-bottom));padding:8px 16px calc(8px + var(--safe-area-bottom)) 16px}
+.footer-controls{background:var(--panel-bg-light);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));transition:all var(--transition-smooth);position:fixed;bottom:0;left:10px;width:calc(100% - 20px);margin-bottom:10px;z-index:1900;box-shadow:0 -6px 30px var(--shadow-color);display:flex;align-items:center;border:1px solid var(--border-color-light);border-radius:40px;min-height:calc(var(--footer-height) + var(--safe-area-bottom));padding:8px 16px calc(8px + var(--safe-area-bottom)) 16px}
 
 .control-icons{display:flex;justify-content:space-around;align-items:center;gap:16px;width:100%}
 .control-icon{display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:10px 14px;border-radius:16px;transition:all var(--transition-smooth);background:rgba(255,255,255,0.0);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border: none; solid var(--border-color-light);color:var(--text-color-light);min-width:65px;position:relative;outline:none}
@@ -1210,7 +1210,11 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         padding-left: var(--safe-area-left, 10px);
         padding-right: var(--safe-area-right, 10px);
     }
+    .undo-redo-bar {
+        top: calc(var(--header-height) + var(--safe-area-top));
+    }
 }
+
 
 
 
@@ -1240,8 +1244,8 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 .layer-panel.active:not(.collapsed):not(.logo-only) {
     width: 100%; /* Occupy full viewport width */
     height: 100%; /* Occupy full viewport height (dvh is better for mobile) */
-    top: flex;
-    right: flex;
+    top: 0; /* FIX: Changed from 'flex' */
+    right: 0; /* FIX: Changed from 'flex' */
     left: auto; /* Reset for LTR layouts */
     max-width: none; /* IMPORTANT: Removes the width constraint from mobile styles */
     border-radius: 0; /* A fullscreen panel should not have rounded corners */
@@ -1471,7 +1475,7 @@ body[data-lang="ar"] .layer-panel.active:not(.collapsed):not(.logo-only) {
 </button>
 </div>
 <div class="app-title-section">
-<h1 id="appTitle">DACO Storymaker</h1>
+<h1 id="appTitle">DACO editor 1</h1>
 <p class="subtitle" id="appSubtitle">made by parham darabi</p>
 </div>
 <div class="header-controls-right">
