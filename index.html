@@ -1158,6 +1158,29 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
 @media (max-width:480px){:root{--footer-base-height:80px;--header-base-height:55px}.header{padding:calc(8px + var(--safe-area-top)) 12px 6px 12px}.footer-controls{padding:8px 12px calc(8px + var(--safe-area-bottom)) 12px}#appTitle{font-size:0.9rem}.control-icons{gap:8px}.control-icon{min-width:55px;padding:8px 10px}.crop-modal{padding:8px}.crop-container{padding:12px;border-radius:12px;max-width:96%;max-height:92vh;max-height:92dvh}.crop-header{margin-bottom:14px}.crop-header h3{font-size:0.95rem}.crop-.crop-viewport{min-height:250px;}
 .crop-instructions{font-size:0.6rem}.zoom-slider{min-width:60px;height:6px}.zoom-slider::-webkit-slider-thumb{width:18px;height:18px}.zoom-slider::-moz-range-thumb{width:18px;height:18px}.zoom-info{font-size:0.65rem;min-width:38px;padding:2px 5px}.layer-panel.active:not(.collapsed):not(.logo-only){max-width:min(320px,90vw)}.layer-panel.collapsed{width:60px}}
 @media (display-mode: standalone) {
+    /* FIX 1: حذف 'position: fixed' از 'html, body' و '.main-app-container'
+      این قوانین ساختار flexbox اصلی را می‌شکنند و باعث می‌شوند 
+      header/footer موقعیت خود را گم کنند.
+    */
+    html, body {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        /* position: fixed; <-- این خطوط مخرب حذف شدند */
+        overflow: hidden;
+    }
+    .main-app-container {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        /* position: fixed; <-- این خطوط مخرب حذف شدند */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    /* این قوانین هدر و فوتر صحیح هستند و باقی می‌مانند */
     .header {
         margin-top: 0;
         left: 0;
@@ -1189,14 +1212,24 @@ body[data-lang="fa"] .slider-value,body[data-lang="ar"] .slider-value{text-align
         padding-left: calc(10px + var(--safe-area-left));
         padding-right: calc(10px + var(--safe-area-right));
     }
+    
+    /* FIX 2: بازنویسی padding کانتینر اصلی برای حذف فاصله 10px اضافه
+      این کد آن گپ بین هدر/فوتر و محتوا را از بین می‌برد.
+    */
     .canvas-container {
+        padding-top: calc(var(--header-height) + var(--safe-area-top)); /* حذف '+ 10px' */
+        padding-bottom: calc(var(--footer-height) + var(--safe-area-bottom)); /* حذف '+ 10px' */
         padding-left: var(--safe-area-left, 10px);
         padding-right: var(--safe-area-right, 10px);
     }
+
+    /* FIX 3: بازنویسی موقعیت نوار Undo/Redo برای چسبیدن به زیر هدر
+    */
     .undo-redo-bar {
-        top: calc(var(--header-height) + var(--safe-area-top));
+        top: calc(var(--header-height) + var(--safe-area-top)); /* حذف '+ 10px' */
     }
 }
+
 
 
 .will-change-transform{will-change:transform}
